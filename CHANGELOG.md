@@ -15,7 +15,7 @@
 - SwiftUI + SwiftData iOS demo with persistent chat and Keychain credentials.
 - Searchable, deduplicated model selection for Settings and conversations.
 - Command-line streaming and catalog example.
-- 37 deterministic offline Swift Testing cases and one simulator UI test.
+- 38 deterministic offline Swift Testing cases and one simulator UI test.
 
 ### Fixed
 
@@ -27,6 +27,11 @@
   assistant messages.
 - Keyboard dismissal uses native Return, scrolling, and presentation behavior
   without a custom oversized keyboard accessory.
+- The demo creates its SwiftData Application Support directory before opening
+  `default.store`, avoiding first-launch Core Data recovery errors.
+- OpenAI token usage is emitted as response metadata instead of linking the
+  beta-only Foundation Models `updateUsage` symbol missing from some iOS 27
+  runtimes.
 
 ### Security
 

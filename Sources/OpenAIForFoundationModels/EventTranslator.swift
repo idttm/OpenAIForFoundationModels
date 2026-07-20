@@ -253,20 +253,25 @@ struct EventTranslator: Sendable {
     await sink.send(
       .response(
         entryID: responseEntryID,
-        action: .updateUsage(
-          input: .init(
-            totalTokenCount: usage.inputTokens ?? 0,
-            cachedTokenCount:
-              usage.inputTokensDetails?.cachedTokens ?? 0
-          ),
-          output: .init(
-            totalTokenCount: usage.outputTokens ?? 0,
-            reasoningTokenCount:
-              usage.outputTokensDetails?.reasoningTokens ?? 0
-          )
-        )
+        action: .updateMetadata(Self.usageMetadata(usage))
       )
     )
+  }
+
+  static func usageMetadata(_ usage: ResponseUsage) -> [String: Int] {
+    let inputTokens = usage.inputTokens ?? 0
+    let outputTokens = usage.outputTokens ?? 0
+
+    return [
+      "openai.usage.input_tokens": inputTokens,
+      "openai.usage.output_tokens": outputTokens,
+      "openai.usage.total_tokens":
+        usage.totalTokens ?? inputTokens + outputTokens,
+      "openai.usage.cached_tokens":
+        usage.inputTokensDetails?.cachedTokens ?? 0,
+      "openai.usage.reasoning_tokens":
+        usage.outputTokensDetails?.reasoningTokens ?? 0,
+    ]
   }
 }
 

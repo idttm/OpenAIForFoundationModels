@@ -25,7 +25,9 @@ SSE framing.
 - Foundation Models tool schemas become strict Responses function tools.
 - `GenerationSchema` becomes Responses `text.format`.
 - Attachments become PNG data URLs when vision is supported.
-- `EventTranslator` emits metadata, text, reasoning, tool arguments, and usage.
+- `EventTranslator` emits metadata, text, reasoning, and tool arguments. OpenAI
+  token usage is preserved as `openai.usage.*` response metadata so the bridge
+  remains compatible across Foundation Models runtime builds.
 - `ErrorMapper` ensures package-internal wire errors never escape publicly.
 
 ## Conversation state

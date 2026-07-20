@@ -65,6 +65,33 @@ struct EventTranslatorTests {
     #expect(await sink.count >= 6)
   }
 
+  @Test("Maps OpenAI usage to runtime-compatible response metadata")
+  func mapsUsageMetadata() throws {
+    let event = try JSONDecoder().decode(
+      ResponseStreamEvent.self,
+      from: Data(
+        #"""
+        {"type":"response.completed","response":{"usage":{"input_tokens":3,"output_tokens":2,"total_tokens":5,"input_tokens_details":{"cached_tokens":1},"output_tokens_details":{"reasoning_tokens":1}}}}
+        """#.utf8
+      )
+    )
+    guard case .completed(let response) = event, let usage = response.usage else {
+      Issue.record("Expected completed response usage")
+      return
+    }
+
+    #expect(
+      EventTranslator.usageMetadata(usage)
+        == [
+          "openai.usage.input_tokens": 3,
+          "openai.usage.output_tokens": 2,
+          "openai.usage.total_tokens": 5,
+          "openai.usage.cached_tokens": 1,
+          "openai.usage.reasoning_tokens": 1,
+        ]
+    )
+  }
+
   @Test("Keeps the OpenAI call ID while function arguments stream")
   func preservesCallIDAcrossArgumentDeltas() async throws {
     let events = AsyncThrowingStream<ResponseStreamEvent, Error> { continuation in
