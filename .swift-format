@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "indentation": {
+    "spaces": 2
+  },
+  "lineLength": 100,
+  "multiElementCollectionTrailingCommas": true,
+  "rules": {
+    "AllPublicDeclarationsHaveDocumentation": false,
+    "OrderedImports": true,
+    "UseTripleSlashForDocumentationComments": true
+  }
+}

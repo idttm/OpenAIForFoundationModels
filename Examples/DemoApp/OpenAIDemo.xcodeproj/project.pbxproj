@@ -1,0 +1,784 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0E0DC881CDE2C19B6A9FFDFD /* GuidedLabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE076B6E794EFCD08EA923FE /* GuidedLabController.swift */; };
+		134CCBFEA25ABDB0520B2A3D /* OpenAIProfileSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D888E77CA1E4EA4BA2D560F /* OpenAIProfileSet.swift */; };
+		15C9D723D36948413C508855 /* ChatThreadDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ADE7FD3C07BB713342D39D /* ChatThreadDestination.swift */; };
+		19A827576DD623D9512FBD8C /* DemoSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC576D7F7B029217D9C4BF7 /* DemoSettings.swift */; };
+		1EF557CF583506DF69274779 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6357C97A8860BA7B501444AA /* ChatMessage.swift */; };
+		20D34FB03556041ED0E48101 /* ChatMessageSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFAA151C3583CD5F985696F /* ChatMessageSnapshot.swift */; };
+		25FEBDA9896C3FFCB3762932 /* ChatThreadRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2171EFAE7B314EC8F4AEC1 /* ChatThreadRow.swift */; };
+		2B96C9F87C894ED35ECE7A8D /* ModelCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EE4EA7769EDD7689358327 /* ModelCatalogView.swift */; };
+		2FD6B636AA36F0E613957EBE /* CredentialBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F90F23C60277CD5FD712DB /* CredentialBanner.swift */; };
+		31371B9579EC1600AF749DBF /* SampleGenerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACE07AAF01571CF3C964A1F /* SampleGenerable.swift */; };
+		386BEA275EBA436776E49C2A /* ChatConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7845AF2D542F97010DDFC /* ChatConversationView.swift */; };
+		3BD8BDDD189CF09E6F42635B /* OpenAIProfileMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C250B67DAC4D93C393998B5 /* OpenAIProfileMode.swift */; };
+		40759834D5D0B45A0885E515 /* ModelDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935A67662ED8A62264E36BC8 /* ModelDetailView.swift */; };
+		438B9AEA0971A055CA2E85B6 /* ChatComposerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F800392300D895B1517AF35D /* ChatComposerView.swift */; };
+		4766A76C9C5F59A78A6EFF3C /* OpenAIForFoundationModels in Frameworks */ = {isa = PBXBuildFile; productRef = 247F347D11936106B5DE437A /* OpenAIForFoundationModels */; };
+		4A5653C818B13CCFD221EB40 /* ModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC259F2B5B28FAF42C6D182 /* ModelFactory.swift */; };
+		5F13506532E0D4FF920D6D4F /* ChatTranscriptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08B1FBA15F195011E1BB594 /* ChatTranscriptView.swift */; };
+		610A153DB73CD4D49BD80390 /* ArchitectureStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40BC3F652CBF7264416B3D8 /* ArchitectureStep.swift */; };
+		61CB0317752FC952FF03CC73 /* KeyboardDismissalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F6674EF2A6F19F3BC7640EE /* KeyboardDismissalUITests.swift */; };
+		647F2DB54B942E9735C7EDE3 /* ChatSessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FFFAA195378D7434970445 /* ChatSessionController.swift */; };
+		69B26D0ADC6385CC6F810D29 /* ChatMessageRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF3F21472CAAB73B7B651B4 /* ChatMessageRole.swift */; };
+		6D6A1F5C07008B292F6B36E3 /* TranscriptBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F9D8FDE180AD55ACB8BFB0 /* TranscriptBuilder.swift */; };
+		6F2771DE2A7717C4245F24C6 /* ReasoningChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B4515E72685912EDAF4002 /* ReasoningChoice.swift */; };
+		7F2774805EFC0C23D025DA03 /* ChatSchemaV1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B346993B4191EAAC280687 /* ChatSchemaV1.swift */; };
+		8452D71CF69CB3E607E2F4AE /* DemoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0550496FF087751D1406F5AE /* DemoError.swift */; };
+		854DC1C0CEEE07D404B1A94B /* ArchitectureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EF01129A317959048BAFB6 /* ArchitectureView.swift */; };
+		891702B5C1B75B3879C399DF /* RootTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2D33F23795C04EAC10332E /* RootTabView.swift */; };
+		8B49C377D5C9BB7E5878BDA8 /* ErrorBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9FDBD05F34E16403A8B011 /* ErrorBanner.swift */; };
+		8DF337130C57BF7A9D69E3E6 /* OpenAIDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5ED5ED5DD8629CEFD45114 /* OpenAIDemoApp.swift */; };
+		91BAADB966BCB348936A4BE1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A943691537EA74B617564E93 /* SettingsView.swift */; };
+		9710AB694E5099F02A0D63C3 /* ChatHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D959CE9769806F3B2CB54 /* ChatHomeView.swift */; };
+		978CBFBADD52BF0552EEAECF /* AppTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB93C4FA332FB37DD0F6246 /* AppTab.swift */; };
+		A9BBD8951D84ECAD2ADBCA0D /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3239B79F0495C23E39D7F953 /* KeychainStore.swift */; };
+		B9DD1CB464A0E7EFB5DE4F2A /* ChatMigrationPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF71C929CF09FDD03D9506E /* ChatMigrationPlan.swift */; };
+		BDB1995580F16C5547D2D712 /* ProfilesLabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768E26CB307F43A9239F1E0E /* ProfilesLabView.swift */; };
+		C01502A4C13148B45193FF98 /* AuthKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A258CC40FF8D28522EA7C5 /* AuthKind.swift */; };
+		C14E2A18C458903EBB8FE70A /* LabDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9D1113849F5F916BD1563D /* LabDestination.swift */; };
+		C95400792E3611CFCCFE81AE /* LabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650E42E69BAA3218002AD172 /* LabsView.swift */; };
+		D7DA5168059EFA7FC0948150 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C047C7FA32014778F5C0740A /* Assets.xcassets */; };
+		D875C1B654F885831BA6CA25 /* ModelRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EBE88E0AAAA229E86B9E3A /* ModelRow.swift */; };
+		DF8E1CECC605043B7DC3CFB9 /* ToolsLabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD759FD9FE95582477AF3E8A /* ToolsLabView.swift */; };
+		E3E5900E7EC37877C8AF0561 /* ModelSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649C5C908D865EE113DFCAEA /* ModelSelectionView.swift */; };
+		EA5094215D70FE6F95F6DB60 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9392F8C743D527B5ED4CEFD /* AppState.swift */; };
+		EC394FA96F63301B6D2D5BA9 /* SampleTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8691C392E86D174232516DA7 /* SampleTools.swift */; };
+		F0F244CAC252CEEF79C5E3B5 /* GuidedLabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85049516E973B31D545D03BA /* GuidedLabView.swift */; };
+		F4AECC081B19E6DB1CF509DA /* ProfilesLabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4DEEC811F3C41AAC7A7812 /* ProfilesLabController.swift */; };
+		F5522A48C182324A8FFE3C43 /* ToolsLabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2993194587DC146AF00F4FEC /* ToolsLabController.swift */; };
+		FC2FD7D278E128AC95811A85 /* ChatMessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B38BECA4698D70FCFA22DF9 /* ChatMessageBubble.swift */; };
+		FD0740B40EFFD537F80FFC58 /* ChatThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4006B56DE4C4C39B326116A7 /* ChatThread.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		422C69B3A35E08505CDFA970 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 198268AE315AF677F4FF981A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F0FD2B5B2A0912C1AF0ED99F;
+			remoteInfo = OpenAIDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0550496FF087751D1406F5AE /* DemoError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoError.swift; sourceTree = "<group>"; };
+		0B2D33F23795C04EAC10332E /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
+		0BB7845AF2D542F97010DDFC /* ChatConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatConversationView.swift; sourceTree = "<group>"; };
+		0E21012ED094D30D685CF6C5 /* OpenAIDemo.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = OpenAIDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		10A258CC40FF8D28522EA7C5 /* AuthKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthKind.swift; sourceTree = "<group>"; };
+		13F9D8FDE180AD55ACB8BFB0 /* TranscriptBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptBuilder.swift; sourceTree = "<group>"; };
+		1AF71C929CF09FDD03D9506E /* ChatMigrationPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMigrationPlan.swift; sourceTree = "<group>"; };
+		2993194587DC146AF00F4FEC /* ToolsLabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsLabController.swift; sourceTree = "<group>"; };
+		2B38BECA4698D70FCFA22DF9 /* ChatMessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageBubble.swift; sourceTree = "<group>"; };
+		2D888E77CA1E4EA4BA2D560F /* OpenAIProfileSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIProfileSet.swift; sourceTree = "<group>"; };
+		3239B79F0495C23E39D7F953 /* KeychainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStore.swift; sourceTree = "<group>"; };
+		33EE4EA7769EDD7689358327 /* ModelCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCatalogView.swift; sourceTree = "<group>"; };
+		4006B56DE4C4C39B326116A7 /* ChatThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatThread.swift; sourceTree = "<group>"; };
+		4BFAA151C3583CD5F985696F /* ChatMessageSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageSnapshot.swift; sourceTree = "<group>"; };
+		4C250B67DAC4D93C393998B5 /* OpenAIProfileMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIProfileMode.swift; sourceTree = "<group>"; };
+		54D8D92BF400825E104BC524 /* OpenAIDemoUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = OpenAIDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		55FFFAA195378D7434970445 /* ChatSessionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSessionController.swift; sourceTree = "<group>"; };
+		5F6674EF2A6F19F3BC7640EE /* KeyboardDismissalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDismissalUITests.swift; sourceTree = "<group>"; };
+		6357C97A8860BA7B501444AA /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		649C5C908D865EE113DFCAEA /* ModelSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSelectionView.swift; sourceTree = "<group>"; };
+		64B4515E72685912EDAF4002 /* ReasoningChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReasoningChoice.swift; sourceTree = "<group>"; };
+		650E42E69BAA3218002AD172 /* LabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabsView.swift; sourceTree = "<group>"; };
+		6ACE07AAF01571CF3C964A1F /* SampleGenerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleGenerable.swift; sourceTree = "<group>"; };
+		6E2171EFAE7B314EC8F4AEC1 /* ChatThreadRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatThreadRow.swift; sourceTree = "<group>"; };
+		768E26CB307F43A9239F1E0E /* ProfilesLabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilesLabView.swift; sourceTree = "<group>"; };
+		7EC576D7F7B029217D9C4BF7 /* DemoSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSettings.swift; sourceTree = "<group>"; };
+		7F9FDBD05F34E16403A8B011 /* ErrorBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorBanner.swift; sourceTree = "<group>"; };
+		83ADE7FD3C07BB713342D39D /* ChatThreadDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatThreadDestination.swift; sourceTree = "<group>"; };
+		85049516E973B31D545D03BA /* GuidedLabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidedLabView.swift; sourceTree = "<group>"; };
+		8691C392E86D174232516DA7 /* SampleTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTools.swift; sourceTree = "<group>"; };
+		935A67662ED8A62264E36BC8 /* ModelDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDetailView.swift; sourceTree = "<group>"; };
+		95EBE88E0AAAA229E86B9E3A /* ModelRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelRow.swift; sourceTree = "<group>"; };
+		9AC259F2B5B28FAF42C6D182 /* ModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelFactory.swift; sourceTree = "<group>"; };
+		9AF3F21472CAAB73B7B651B4 /* ChatMessageRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageRole.swift; sourceTree = "<group>"; };
+		9BB93C4FA332FB37DD0F6246 /* AppTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTab.swift; sourceTree = "<group>"; };
+		A943691537EA74B617564E93 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		B5B346993B4191EAAC280687 /* ChatSchemaV1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSchemaV1.swift; sourceTree = "<group>"; };
+		BD759FD9FE95582477AF3E8A /* ToolsLabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsLabView.swift; sourceTree = "<group>"; };
+		BDF7C5E299E8D5731041BB12 /* OpenAIForFoundationModels */ = {isa = PBXFileReference; lastKnownFileType = folder; name = OpenAIForFoundationModels; path = ../..; sourceTree = SOURCE_ROOT; };
+		C047C7FA32014778F5C0740A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C6F90F23C60277CD5FD712DB /* CredentialBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialBanner.swift; sourceTree = "<group>"; };
+		C9392F8C743D527B5ED4CEFD /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		CB1FCB545EF1070FC0F6D452 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		E08B1FBA15F195011E1BB594 /* ChatTranscriptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTranscriptView.swift; sourceTree = "<group>"; };
+		E40BC3F652CBF7264416B3D8 /* ArchitectureStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchitectureStep.swift; sourceTree = "<group>"; };
+		EE076B6E794EFCD08EA923FE /* GuidedLabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidedLabController.swift; sourceTree = "<group>"; };
+		F7EF01129A317959048BAFB6 /* ArchitectureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchitectureView.swift; sourceTree = "<group>"; };
+		F800392300D895B1517AF35D /* ChatComposerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatComposerView.swift; sourceTree = "<group>"; };
+		FA5D959CE9769806F3B2CB54 /* ChatHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHomeView.swift; sourceTree = "<group>"; };
+		FB4DEEC811F3C41AAC7A7812 /* ProfilesLabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilesLabController.swift; sourceTree = "<group>"; };
+		FB5ED5ED5DD8629CEFD45114 /* OpenAIDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIDemoApp.swift; sourceTree = "<group>"; };
+		FE9D1113849F5F916BD1563D /* LabDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabDestination.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		172007DB0D7DBA7DE10FD922 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4766A76C9C5F59A78A6EFF3C /* OpenAIForFoundationModels in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		03523D36BA6D71D5027F87C7 = {
+			isa = PBXGroup;
+			children = (
+				3CA641133BDA6746F0D6E377 /* OpenAIDemo */,
+				627FB57C849DED126A498656 /* OpenAIDemoUITests */,
+				F0E1768A082E93CAA757B1C7 /* Packages */,
+				27E5397E3BC5D19B3611394D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1173A7835783188B895CA8A2 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				10A258CC40FF8D28522EA7C5 /* AuthKind.swift */,
+				0550496FF087751D1406F5AE /* DemoError.swift */,
+				7EC576D7F7B029217D9C4BF7 /* DemoSettings.swift */,
+				64B4515E72685912EDAF4002 /* ReasoningChoice.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		16FE73AEE0232CC0639F3A16 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				2993194587DC146AF00F4FEC /* ToolsLabController.swift */,
+				BD759FD9FE95582477AF3E8A /* ToolsLabView.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		21ADCCD0A69615B02A3C267C /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A943691537EA74B617564E93 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		27E5397E3BC5D19B3611394D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0E21012ED094D30D685CF6C5 /* OpenAIDemo.app */,
+				54D8D92BF400825E104BC524 /* OpenAIDemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2888D40D63E3A23EEF59DB48 /* Labs */ = {
+			isa = PBXGroup;
+			children = (
+				FE9D1113849F5F916BD1563D /* LabDestination.swift */,
+				650E42E69BAA3218002AD172 /* LabsView.swift */,
+			);
+			path = Labs;
+			sourceTree = "<group>";
+		};
+		32A60596946C46311CD6EAA6 /* Docs */ = {
+			isa = PBXGroup;
+			children = (
+				E40BC3F652CBF7264416B3D8 /* ArchitectureStep.swift */,
+				F7EF01129A317959048BAFB6 /* ArchitectureView.swift */,
+			);
+			path = Docs;
+			sourceTree = "<group>";
+		};
+		3CA641133BDA6746F0D6E377 /* OpenAIDemo */ = {
+			isa = PBXGroup;
+			children = (
+				A3EAF7C9D69D04B8147716FF /* App */,
+				FAA9604111357BAFFCDFE25B /* Features */,
+				B7DA2B2CF6BBAE21AF8F8978 /* Models */,
+				4ABEDC3DE39B39800B4BEA6B /* Resources */,
+				1173A7835783188B895CA8A2 /* Settings */,
+				6DC392D17687E8ECEDB874E7 /* Support */,
+			);
+			path = OpenAIDemo;
+			sourceTree = "<group>";
+		};
+		42EDB94812090E1B8A0E30C7 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				7F9FDBD05F34E16403A8B011 /* ErrorBanner.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		4ABEDC3DE39B39800B4BEA6B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C047C7FA32014778F5C0740A /* Assets.xcassets */,
+				CB1FCB545EF1070FC0F6D452 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		627FB57C849DED126A498656 /* OpenAIDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5F6674EF2A6F19F3BC7640EE /* KeyboardDismissalUITests.swift */,
+			);
+			path = OpenAIDemoUITests;
+			sourceTree = "<group>";
+		};
+		6DC392D17687E8ECEDB874E7 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				42EDB94812090E1B8A0E30C7 /* UI */,
+				3239B79F0495C23E39D7F953 /* KeychainStore.swift */,
+				9AC259F2B5B28FAF42C6D182 /* ModelFactory.swift */,
+				6ACE07AAF01571CF3C964A1F /* SampleGenerable.swift */,
+				8691C392E86D174232516DA7 /* SampleTools.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		798A6AAB14181DF13FB551CE /* Guided */ = {
+			isa = PBXGroup;
+			children = (
+				EE076B6E794EFCD08EA923FE /* GuidedLabController.swift */,
+				85049516E973B31D545D03BA /* GuidedLabView.swift */,
+			);
+			path = Guided;
+			sourceTree = "<group>";
+		};
+		8A4AA8AA02E609548B6CFAD5 /* Catalog */ = {
+			isa = PBXGroup;
+			children = (
+				33EE4EA7769EDD7689358327 /* ModelCatalogView.swift */,
+				935A67662ED8A62264E36BC8 /* ModelDetailView.swift */,
+				95EBE88E0AAAA229E86B9E3A /* ModelRow.swift */,
+				649C5C908D865EE113DFCAEA /* ModelSelectionView.swift */,
+			);
+			path = Catalog;
+			sourceTree = "<group>";
+		};
+		8D37AD367B11972ECEC59299 /* Profiles */ = {
+			isa = PBXGroup;
+			children = (
+				4C250B67DAC4D93C393998B5 /* OpenAIProfileMode.swift */,
+				2D888E77CA1E4EA4BA2D560F /* OpenAIProfileSet.swift */,
+				FB4DEEC811F3C41AAC7A7812 /* ProfilesLabController.swift */,
+				768E26CB307F43A9239F1E0E /* ProfilesLabView.swift */,
+			);
+			path = Profiles;
+			sourceTree = "<group>";
+		};
+		A3EAF7C9D69D04B8147716FF /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C9392F8C743D527B5ED4CEFD /* AppState.swift */,
+				9BB93C4FA332FB37DD0F6246 /* AppTab.swift */,
+				FB5ED5ED5DD8629CEFD45114 /* OpenAIDemoApp.swift */,
+				0B2D33F23795C04EAC10332E /* RootTabView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		B7DA2B2CF6BBAE21AF8F8978 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6357C97A8860BA7B501444AA /* ChatMessage.swift */,
+				9AF3F21472CAAB73B7B651B4 /* ChatMessageRole.swift */,
+				1AF71C929CF09FDD03D9506E /* ChatMigrationPlan.swift */,
+				B5B346993B4191EAAC280687 /* ChatSchemaV1.swift */,
+				4006B56DE4C4C39B326116A7 /* ChatThread.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D778DACAEC2C08F4B655757E /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				F800392300D895B1517AF35D /* ChatComposerView.swift */,
+				0BB7845AF2D542F97010DDFC /* ChatConversationView.swift */,
+				FA5D959CE9769806F3B2CB54 /* ChatHomeView.swift */,
+				2B38BECA4698D70FCFA22DF9 /* ChatMessageBubble.swift */,
+				4BFAA151C3583CD5F985696F /* ChatMessageSnapshot.swift */,
+				55FFFAA195378D7434970445 /* ChatSessionController.swift */,
+				83ADE7FD3C07BB713342D39D /* ChatThreadDestination.swift */,
+				6E2171EFAE7B314EC8F4AEC1 /* ChatThreadRow.swift */,
+				E08B1FBA15F195011E1BB594 /* ChatTranscriptView.swift */,
+				C6F90F23C60277CD5FD712DB /* CredentialBanner.swift */,
+				13F9D8FDE180AD55ACB8BFB0 /* TranscriptBuilder.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		F0E1768A082E93CAA757B1C7 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				BDF7C5E299E8D5731041BB12 /* OpenAIForFoundationModels */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		FAA9604111357BAFFCDFE25B /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				8A4AA8AA02E609548B6CFAD5 /* Catalog */,
+				D778DACAEC2C08F4B655757E /* Chat */,
+				32A60596946C46311CD6EAA6 /* Docs */,
+				798A6AAB14181DF13FB551CE /* Guided */,
+				2888D40D63E3A23EEF59DB48 /* Labs */,
+				8D37AD367B11972ECEC59299 /* Profiles */,
+				21ADCCD0A69615B02A3C267C /* Settings */,
+				16FE73AEE0232CC0639F3A16 /* Tools */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0966A0404FB1DE2A56ACE58D /* OpenAIDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DC9E12B68E2CE59B174A2E43 /* Build configuration list for PBXNativeTarget "OpenAIDemoUITests" */;
+			buildPhases = (
+				F09785F4DC4A126D1953B9A0 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				343D1BC52346FADC99838655 /* PBXTargetDependency */,
+			);
+			name = OpenAIDemoUITests;
+			packageProductDependencies = (
+			);
+			productName = OpenAIDemoUITests;
+			productReference = 54D8D92BF400825E104BC524 /* OpenAIDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		F0FD2B5B2A0912C1AF0ED99F /* OpenAIDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 96F3C9B428C3A4B7D0F1A45A /* Build configuration list for PBXNativeTarget "OpenAIDemo" */;
+			buildPhases = (
+				A04AD7211D41F47D1D42F32D /* Sources */,
+				773281E18AE7BEF12FCDF38B /* Resources */,
+				172007DB0D7DBA7DE10FD922 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OpenAIDemo;
+			packageProductDependencies = (
+				247F347D11936106B5DE437A /* OpenAIForFoundationModels */,
+			);
+			productName = OpenAIDemo;
+			productReference = 0E21012ED094D30D685CF6C5 /* OpenAIDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		198268AE315AF677F4FF981A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 2700;
+				TargetAttributes = {
+					0966A0404FB1DE2A56ACE58D = {
+						TestTargetID = F0FD2B5B2A0912C1AF0ED99F;
+					};
+					F0FD2B5B2A0912C1AF0ED99F = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 349FF9F6D9B79C9493BFDAFB /* Build configuration list for PBXProject "OpenAIDemo" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 03523D36BA6D71D5027F87C7;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				E3718287554415D80A519D8C /* XCLocalSwiftPackageReference "../.." */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 27E5397E3BC5D19B3611394D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F0FD2B5B2A0912C1AF0ED99F /* OpenAIDemo */,
+				0966A0404FB1DE2A56ACE58D /* OpenAIDemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		773281E18AE7BEF12FCDF38B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7DA5168059EFA7FC0948150 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A04AD7211D41F47D1D42F32D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA5094215D70FE6F95F6DB60 /* AppState.swift in Sources */,
+				978CBFBADD52BF0552EEAECF /* AppTab.swift in Sources */,
+				610A153DB73CD4D49BD80390 /* ArchitectureStep.swift in Sources */,
+				854DC1C0CEEE07D404B1A94B /* ArchitectureView.swift in Sources */,
+				C01502A4C13148B45193FF98 /* AuthKind.swift in Sources */,
+				438B9AEA0971A055CA2E85B6 /* ChatComposerView.swift in Sources */,
+				386BEA275EBA436776E49C2A /* ChatConversationView.swift in Sources */,
+				9710AB694E5099F02A0D63C3 /* ChatHomeView.swift in Sources */,
+				1EF557CF583506DF69274779 /* ChatMessage.swift in Sources */,
+				FC2FD7D278E128AC95811A85 /* ChatMessageBubble.swift in Sources */,
+				69B26D0ADC6385CC6F810D29 /* ChatMessageRole.swift in Sources */,
+				20D34FB03556041ED0E48101 /* ChatMessageSnapshot.swift in Sources */,
+				B9DD1CB464A0E7EFB5DE4F2A /* ChatMigrationPlan.swift in Sources */,
+				7F2774805EFC0C23D025DA03 /* ChatSchemaV1.swift in Sources */,
+				647F2DB54B942E9735C7EDE3 /* ChatSessionController.swift in Sources */,
+				FD0740B40EFFD537F80FFC58 /* ChatThread.swift in Sources */,
+				15C9D723D36948413C508855 /* ChatThreadDestination.swift in Sources */,
+				25FEBDA9896C3FFCB3762932 /* ChatThreadRow.swift in Sources */,
+				5F13506532E0D4FF920D6D4F /* ChatTranscriptView.swift in Sources */,
+				2FD6B636AA36F0E613957EBE /* CredentialBanner.swift in Sources */,
+				8452D71CF69CB3E607E2F4AE /* DemoError.swift in Sources */,
+				19A827576DD623D9512FBD8C /* DemoSettings.swift in Sources */,
+				8B49C377D5C9BB7E5878BDA8 /* ErrorBanner.swift in Sources */,
+				0E0DC881CDE2C19B6A9FFDFD /* GuidedLabController.swift in Sources */,
+				F0F244CAC252CEEF79C5E3B5 /* GuidedLabView.swift in Sources */,
+				A9BBD8951D84ECAD2ADBCA0D /* KeychainStore.swift in Sources */,
+				C14E2A18C458903EBB8FE70A /* LabDestination.swift in Sources */,
+				C95400792E3611CFCCFE81AE /* LabsView.swift in Sources */,
+				2B96C9F87C894ED35ECE7A8D /* ModelCatalogView.swift in Sources */,
+				40759834D5D0B45A0885E515 /* ModelDetailView.swift in Sources */,
+				4A5653C818B13CCFD221EB40 /* ModelFactory.swift in Sources */,
+				D875C1B654F885831BA6CA25 /* ModelRow.swift in Sources */,
+				E3E5900E7EC37877C8AF0561 /* ModelSelectionView.swift in Sources */,
+				8DF337130C57BF7A9D69E3E6 /* OpenAIDemoApp.swift in Sources */,
+				3BD8BDDD189CF09E6F42635B /* OpenAIProfileMode.swift in Sources */,
+				134CCBFEA25ABDB0520B2A3D /* OpenAIProfileSet.swift in Sources */,
+				F4AECC081B19E6DB1CF509DA /* ProfilesLabController.swift in Sources */,
+				BDB1995580F16C5547D2D712 /* ProfilesLabView.swift in Sources */,
+				6F2771DE2A7717C4245F24C6 /* ReasoningChoice.swift in Sources */,
+				891702B5C1B75B3879C399DF /* RootTabView.swift in Sources */,
+				31371B9579EC1600AF749DBF /* SampleGenerable.swift in Sources */,
+				EC394FA96F63301B6D2D5BA9 /* SampleTools.swift in Sources */,
+				91BAADB966BCB348936A4BE1 /* SettingsView.swift in Sources */,
+				F5522A48C182324A8FFE3C43 /* ToolsLabController.swift in Sources */,
+				DF8E1CECC605043B7DC3CFB9 /* ToolsLabView.swift in Sources */,
+				6D6A1F5C07008B292F6B36E3 /* TranscriptBuilder.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F09785F4DC4A126D1953B9A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61CB0317752FC952FF03CC73 /* KeyboardDismissalUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		343D1BC52346FADC99838655 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F0FD2B5B2A0912C1AF0ED99F /* OpenAIDemo */;
+			targetProxy = 422C69B3A35E08505CDFA970 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1B4E927607BFB598A27BDB6E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.example.OpenAIDemoUITests;
+				SDKROOT = iphoneos;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = OpenAIDemo;
+			};
+			name = Debug;
+		};
+		212DD9C0B2AC5CB45DC07BE8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.example.OpenAIDemoUITests;
+				SDKROOT = iphoneos;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = OpenAIDemo;
+			};
+			name = Release;
+		};
+		23C4369CD04B05DFB79015BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OpenAIDemo/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = OpenAIDemo;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "OpenAIDemo may reach a local auth proxy during development.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.example.OpenAIDemo;
+				PRODUCT_NAME = OpenAIDemo;
+				SDKROOT = iphoneos;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5A804918392EC0015252E49F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OpenAIDemo/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = OpenAIDemo;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "OpenAIDemo may reach a local auth proxy during development.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.example.OpenAIDemo;
+				PRODUCT_NAME = OpenAIDemo;
+				SDKROOT = iphoneos;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C4D253CC49810BC8D277757F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E8A64AB65A657AA0628FBFC7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		349FF9F6D9B79C9493BFDAFB /* Build configuration list for PBXProject "OpenAIDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8A64AB65A657AA0628FBFC7 /* Debug */,
+				C4D253CC49810BC8D277757F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		96F3C9B428C3A4B7D0F1A45A /* Build configuration list for PBXNativeTarget "OpenAIDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				23C4369CD04B05DFB79015BF /* Debug */,
+				5A804918392EC0015252E49F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		DC9E12B68E2CE59B174A2E43 /* Build configuration list for PBXNativeTarget "OpenAIDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1B4E927607BFB598A27BDB6E /* Debug */,
+				212DD9C0B2AC5CB45DC07BE8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		E3718287554415D80A519D8C /* XCLocalSwiftPackageReference "../.." */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../..;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		247F347D11936106B5DE437A /* OpenAIForFoundationModels */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = OpenAIForFoundationModels;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 198268AE315AF677F4FF981A /* Project object */;
+}

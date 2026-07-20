@@ -1,0 +1,43 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# SwiftPM / Xcode
+.build/
+**/.build/
+/.build
+/Packages
+/*.xcodeproj
+xcuserdata/
+**/xcuserdata/
+*.xcuserstate
+*.xccheckout
+DerivedData/
+**/DerivedData/
+.derivedData/
+.build-reference-cache/
+.swiftpm-reference-cache/
+.swiftpm/configuration/registries.json
+.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+.swiftpm/xcode/xcuserdata/
+
+# Secrets (never commit)
+.env
+.env.*
+**/.env
+**/.env.*
+!.env.example
+secrets/
+**/secrets/
+.netrc
+*.pem
+**/*.pem
+
+# Local CLI binary name if produced outside .build
+/OpenAIExample
+
+# Maintainer-only local agent skills (NOT published to public GitHub)
+# Includes public-release skill: prepare / sanitize / ship every public release.
+.grok/
+.agents/skills/public-release/
+**/.grok/skills/public-release/

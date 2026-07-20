@@ -1,0 +1,87 @@
+# XcodeGen manifest — regenerate with: xcodegen generate
+# Requires Xcode 27 + iOS 27 (Foundation Models server-side providers).
+name: OpenAIDemo
+options:
+  bundleIdPrefix: org.example
+  deploymentTarget:
+    iOS: "27.0"
+  xcodeVersion: "27.0"
+  createIntermediateGroups: true
+  groupSortPosition: top
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    TARGETED_DEVICE_FAMILY: "1,2"
+    IPHONEOS_DEPLOYMENT_TARGET: "27.0"
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+    CLANG_ENABLE_MODULES: YES
+
+packages:
+  OpenAIForFoundationModels:
+    path: ../..
+
+targets:
+  OpenAIDemo:
+    type: application
+    platform: iOS
+    deploymentTarget: "27.0"
+    sources:
+      - path: OpenAIDemo
+        excludes:
+          - "**/.DS_Store"
+    resources:
+      # Package docs for the in-app architecture guide.
+      - path: ../../Docs
+        type: folder
+        destination: Docs
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: org.example.OpenAIDemo
+        PRODUCT_NAME: OpenAIDemo
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: OpenAIDemo
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_NSLocalNetworkUsageDescription: "OpenAIDemo may reach a local auth proxy during development."
+        SWIFT_STRICT_CONCURRENCY: complete
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: ""
+        SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD: NO
+    dependencies:
+      - package: OpenAIForFoundationModels
+        product: OpenAIForFoundationModels
+    info:
+      path: OpenAIDemo/Resources/Info.plist
+      properties:
+        CFBundleDisplayName: OpenAIDemo
+        UILaunchScreen: {}
+        LSRequiresIPhoneOS: true
+
+  OpenAIDemoUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    deploymentTarget: "27.0"
+    sources:
+      - path: OpenAIDemoUITests
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: org.example.OpenAIDemoUITests
+        GENERATE_INFOPLIST_FILE: YES
+        SWIFT_STRICT_CONCURRENCY: complete
+    dependencies:
+      - target: OpenAIDemo
+
+schemes:
+  OpenAIDemo:
+    build:
+      targets:
+        OpenAIDemo: all
+        OpenAIDemoUITests: [test]
+    test:
+      targets:
+        - OpenAIDemoUITests
