@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  hygiene:
+    name: Repository hygiene
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Scan publishable files
+        run: ./scripts/check-repository-hygiene.sh
+
+  api:
+    name: Portable transport compile
+    runs-on: macos-26
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Toolchain
+        run: |
+          xcodebuild -version
+          swift --version
+      - name: Build portable transport
+        run: swift build --target OpenAIAPI
+
+  xcode-27:
+    name: Full bridge and demo
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: [self-hosted, macOS, xcode-27]
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Full release check
+        run: ./scripts/release-check.sh
