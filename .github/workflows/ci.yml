@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Scan publishable files
         run: ./scripts/check-repository-hygiene.sh
 
@@ -28,7 +28,7 @@ jobs:
     runs-on: macos-26
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Toolchain
         run: |
           xcodebuild -version
@@ -42,6 +42,6 @@ jobs:
     runs-on: [self-hosted, macOS, xcode-27]
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Full release check
         run: ./scripts/release-check.sh
