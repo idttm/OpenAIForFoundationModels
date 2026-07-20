@@ -13,7 +13,7 @@
 - [x] No API keys, tokens, `.env`, Keychain exports, or signing credentials
 - [x] Repository hygiene and OpenAI-key patterns reviewed
 - [x] Direct-key mode is described as development-only
-- [ ] Security advisory/reporting channel configured
+- [x] Security advisory/reporting channel configured
 - [x] Demo screenshots contain no credentials or private conversation data
 
 ## Validation
