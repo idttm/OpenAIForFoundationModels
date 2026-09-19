@@ -1,0 +1,2 @@
+// Optional, ignored signing settings for local development.
+#include? "LocalSigning.xcconfig"

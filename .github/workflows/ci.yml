@@ -2,7 +2,6 @@ name: CI
 
 on:
   push:
-    branches: [main, master]
   pull_request:
   workflow_dispatch:
 
@@ -20,11 +19,20 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Test publication safeguards
+        run: python3 -m unittest discover -s scripts/tests -v
       - name: Scan publishable files
         run: ./scripts/check-repository-hygiene.sh
+      - name: Scan staged tree and reachable history
+        run: |
+          ./scripts/check-repository-hygiene.sh --index
+          ./scripts/check-repository-hygiene.sh --history HEAD
 
   api:
     name: Portable transport compile
+    needs: hygiene
     runs-on: macos-26
     timeout-minutes: 15
     steps:
@@ -38,6 +46,7 @@ jobs:
 
   xcode-27:
     name: Full bridge and demo
+    needs: hygiene
     if: github.event_name == 'workflow_dispatch'
     runs-on: [self-hosted, macOS, xcode-27]
     timeout-minutes: 30

@@ -6,7 +6,7 @@ The package uses Swift 6.2 and Apple’s OS 27 Foundation Models server-side
 language-model APIs.
 
 ```sh
-export DEVELOPER_DIR=/Applications/Xcode-beta.app/Contents/Developer
+export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer
 xcodebuild -version
 swift --version
 ```

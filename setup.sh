@@ -3,11 +3,8 @@ set -euo pipefail
 
 cd "$(dirname "$0")"
 
-if [[ -d /Applications/Xcode-beta.app ]]; then
-  export DEVELOPER_DIR=/Applications/Xcode-beta.app/Contents/Developer
-elif [[ -d /Applications/Xcode.app ]]; then
-  export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer
-fi
+# Honor an explicit toolchain or the active Xcode selection.
+export DEVELOPER_DIR="${DEVELOPER_DIR:-$(xcode-select -p)}"
 
 echo "Using: ${DEVELOPER_DIR:-$(xcode-select -p)}"
 xcodebuild -version

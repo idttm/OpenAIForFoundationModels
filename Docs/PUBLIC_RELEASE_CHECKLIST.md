@@ -1,34 +1,54 @@
 # Public release checklist
 
-## Source and identity
+Copy this checklist for each release and leave every approval unchecked until
+the current release has been reviewed. Replace `X.Y.Z` and other placeholders.
 
-- [x] Public repository owner and URL chosen
-- [x] Package installation snippets updated with the real URL
-- [ ] License and trademark wording reviewed
-- [ ] Commit author identity is appropriate for publication
-- [x] No private design notes or local absolute paths
+## Scope and identity
 
-## Security
+- [ ] Release version, date, owner, and exact target remote are recorded.
+- [ ] The public set contains only product source, public tests and examples,
+      the license, and useful contributor documentation.
+- [ ] Private agent instructions or configuration, prompts, harness or
+      orchestration files, audit or log material, personal paths, and secrets
+      are excluded.
+- [ ] License, trademark, security-reporting, and support references are
+      current and point to public locations.
+- [ ] Commit authorship and repository ownership are appropriate for release.
 
-- [x] No API keys, tokens, `.env`, Keychain exports, or signing credentials
-- [x] Repository hygiene and OpenAI-key patterns reviewed
-- [x] Direct-key mode is described as development-only
-- [x] Security advisory/reporting channel configured
-- [x] Demo screenshots contain no credentials or private conversation data
+## Guard and validation
 
-## Validation
+- [ ] Publication guards are installed while preserving existing hooks:
+      `python3 scripts/install-publication-hooks.py`.
+- [ ] Worktree scan passes:
+      `./scripts/check-repository-hygiene.sh`.
+- [ ] Index scan passes:
+      `./scripts/check-repository-hygiene.sh --index`.
+- [ ] Full reachable-history scan passes:
+      `./scripts/check-repository-hygiene.sh --history HEAD`.
+- [ ] Publication guard tests pass:
+      `python3 -m unittest discover -s scripts/tests`.
+- [ ] Selected stable Xcode 27+ package, offline test, and demo checks pass.
+- [ ] Direct-key and relay smoke checks, if claimed for this release, are
+      reviewed without recording credentials or sensitive prompts.
 
-- [x] `swift build`
-- [x] `swift test` — 37 package tests
-- [x] `xcodegen generate`
-- [x] Demo builds, installs, launches, and shows all four tabs
-- [ ] Direct-key development flow smoke-tested manually
-- [ ] Relay flow smoke-tested before claiming production readiness
+The `--history HEAD` guard intentionally blocks existing historical exposures
+until a maintainer authorizes cleanup. A history rewrite cannot erase clones,
+caches, forks, or previously published artifacts. The guard is heuristic and
+does not replace human review.
 
-## Release assets
+## Release notes and assets
 
-- [x] README and local documentation links work
-- [ ] `CHANGELOG.md` finalized
-- [ ] Version/tag selected
-- [ ] Devpost copy, screenshots, demo video, and repository URL reviewed
-- [x] Submission owner explicitly approves this public repository publish
+- [ ] `CHANGELOG.md` and release notes are finalized for `X.Y.Z`.
+- [ ] Screenshots, archives, sample projects, and other release assets contain
+      no private material or credentials.
+- [ ] CI logs and generated artifacts have been reviewed for private values,
+      personal paths, and accidental configuration.
+- [ ] Every README, documentation, package, security, and support reference
+      resolves to the intended public location.
+- [ ] All public file changes, tests, examples, and license text are reviewed.
+
+## Maintainer authorization
+
+- [ ] Maintainer approves the exact public file list and release assets.
+- [ ] Maintainer approves the exact tag, remote, and mutation commands.
+- [ ] Release publication is recorded with the resulting public references.

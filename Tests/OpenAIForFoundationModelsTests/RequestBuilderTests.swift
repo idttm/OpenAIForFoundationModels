@@ -51,6 +51,26 @@ struct RequestBuilderTests {
     #expect(built.request.input.first?.messageContent?.textValue == "Be concise.")
   }
 
+  @Test("Preserves instructions inserted after conversation turns")
+  func preservesInstructionOrder() throws {
+    let request = generationRequest(entries: [
+      instructions("Use the initial format."),
+      prompt("First question"),
+      response("First answer"),
+      instructions("Use the updated format from now on."),
+      prompt("Second question"),
+    ])
+    let built = try RequestBuilder.build(from: request, model: fullModel)
+    #expect(
+      built.request.input.compactMap(\.messageRole) == [
+        .developer, .user, .assistant, .developer, .user,
+      ])
+    #expect(
+      built.request.input[3].messageContent?.textValue
+        == "Use the updated format from now on."
+    )
+  }
+
   @Test("Maps function definitions, tool calls, outputs, and built-in web search")
   func mapsTools() throws {
     let definition = try toolDefinition(name: "clock")
@@ -129,7 +149,7 @@ struct RequestBuilderTests {
       dependencies: []
     )
 
-    let value = RequestBuilder.jsonSchema(from: schema)
+    let value = try RequestBuilder.jsonSchema(from: schema)
     guard case .object(let root) = value,
       case .array(let required) = root["required"],
       case .object(let properties) = root["properties"],
@@ -154,6 +174,33 @@ struct RequestBuilderTests {
       }
     )
     #expect(root["additionalProperties"] == .bool(false))
+  }
+
+  @Test("Rejects unsupported schema compositions before a network request")
+  func rejectsUnsupportedCompositions() throws {
+    let unsupported: JSONValue = .object([
+      "type": .string("object"),
+      "properties": .object([
+        "value": .object(["allOf": .array([.object(["type": .string("string")])])])
+      ]),
+    ])
+    #expect(throws: LanguageModelError.self) {
+      _ = try RequestBuilder.sanitizeSchema(unsupported)
+    }
+    // A property named like a schema keyword is valid and must be preserved.
+    let valid: JSONValue = .object([
+      "type": .string("object"),
+      "properties": .object(["allOf": .object(["type": .string("string")])]),
+      "required": .array([.string("allOf")]),
+    ])
+    let converted = try RequestBuilder.sanitizeSchema(valid)
+    guard case .object(let root) = converted,
+      case .object(let properties) = root["properties"]
+    else {
+      Issue.record("Expected an object schema.")
+      return
+    }
+    #expect(properties["allOf"] != nil)
   }
 
   @Test("Strict mode rejects tools on an unsupported deployment")

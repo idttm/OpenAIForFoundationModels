@@ -11,6 +11,8 @@ package struct APIError: Error, Sendable, Hashable, Codable {
     case insufficientCredits = "insufficient_quota"
     case paymentRequired = "payment_required"
     case contextLength = "context_length_exceeded"
+    case refusal
+    case incomplete
     case api = "api_error"
     case server = "server_error"
     case other
@@ -64,6 +66,8 @@ package struct APIError: Error, Sendable, Hashable, Codable {
     let lower = message.lowercased()
     if code == "context_length_exceeded" { return .contextLength }
     if code == "insufficient_quota" { return .insufficientCredits }
+    if code == "rate_limit_exceeded" { return .rateLimit }
+    if let code, let exact = Kind(rawValue: code) { return exact }
     if statusCode == 401 || lower.contains("api key") || lower.contains("unauthorized") {
       return .authentication
     }

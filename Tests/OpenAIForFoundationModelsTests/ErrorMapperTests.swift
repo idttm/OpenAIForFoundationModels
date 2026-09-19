@@ -19,6 +19,32 @@ struct ErrorMapperTests {
     #expect(quota as? OpenAIError == .insufficientCredits)
   }
 
+  @Test("Maps refusal and incomplete responses to explicit public errors")
+  func mapsRefusalAndIncomplete() {
+    let refusal = ErrorMapper.map(
+      APIError(kind: .refusal, message: "Safety refusal", statusCode: nil)
+    )
+    #expect(refusal as? OpenAIError == .refusal(message: "Safety refusal"))
+
+    let incomplete = ErrorMapper.map(
+      APIError(
+        kind: .incomplete,
+        message: "OpenAI response incomplete.",
+        statusCode: nil,
+        metadata: ["incomplete_reason": "max_output_tokens"]
+      )
+    )
+    #expect(incomplete as? OpenAIError == .incomplete(reason: "max_output_tokens"))
+  }
+
+  @Test("Uses safe fallback when incomplete reason is absent")
+  func mapsUnknownIncompleteReason() {
+    let mapped = ErrorMapper.map(
+      APIError(kind: .incomplete, message: "", statusCode: nil)
+    )
+    #expect(mapped as? OpenAIError == .incomplete(reason: "unknown"))
+  }
+
   @Test("Maps cancellation without wrapping it")
   func preservesCancellation() {
     #expect(ErrorMapper.map(CancellationError()) is CancellationError)

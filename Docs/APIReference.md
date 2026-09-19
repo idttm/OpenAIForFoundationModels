@@ -74,8 +74,25 @@ values remain client-side function tools.
 
 Public bridge errors cover credentials, quota, unsupported capabilities,
 endpoint policy, HTTP failures, empty streams, missing resources, permissions,
-and sanitized upstream failures. Rate limits, timeouts, and context-size
-failures map to the corresponding `LanguageModelError`.
+refusals, incomplete responses, and sanitized upstream failures. Refusal
+terminal events map to `OpenAIError.refusal(message:)`; incomplete responses
+preserve `incomplete_details.reason` through `OpenAIError.incomplete(reason:)`.
+Rate limits, timeouts, and context-size failures map to the corresponding
+`LanguageModelError`.
+
+## Compatibility notes
+
+Conversation state is reconstructed from the Foundation Models transcript.
+Provider-authored encrypted reasoning items are not exposed losslessly there,
+so encrypted reasoning replay and assistant-phase reasoning continuity are not
+supported. Foundation Models per-delta token counts are approximate; exact
+Responses totals are emitted as `openai.usage.*` response metadata.
+
+Instruction entries retain their position in the conversation. Image input
+applies its EXIF orientation, including mirrored orientations, to the encoded
+pixels. Strict schemas reject unsupported compositions such as `allOf`
+locally with `LanguageModelError.unsupportedGenerationGuide`, following the
+[Structured Outputs subset](https://developers.openai.com/api/docs/guides/structured-outputs).
 
 ## `JSONValue`
 

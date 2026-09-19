@@ -43,6 +43,20 @@ enum ErrorMapper {
         .init(contextSize: 0, tokenCount: 0, debugDescription: detail)
       )
 
+    case .refusal:
+      return OpenAIError.refusal(
+        message: detail.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+          ? "The model refused the request."
+          : detail
+      )
+
+    case .incomplete:
+      let reason = (error.metadata?["incomplete_reason"] ?? error.metadata?["reason"] ?? "")
+        .trimmingCharacters(in: .whitespacesAndNewlines)
+      return OpenAIError.incomplete(
+        reason: reason.isEmpty ? "unknown" : OpenAIError.sanitize(reason)
+      )
+
     case .authentication:
       return OpenAIError.missingOrInvalidCredential
 

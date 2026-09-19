@@ -20,6 +20,22 @@ package struct ResponseSummary: Sendable, Hashable, Decodable {
   package var usage: ResponseUsage?
   package var error: ResponseErrorPayload?
   package var output: [ResponseOutputItem]?
+  package var incompleteDetails: ResponseIncompleteDetails?
+
+  private enum CodingKeys: String, CodingKey {
+    case id, model, status, usage, error, output
+    case incompleteDetails = "incomplete_details"
+  }
+
+  package var refusalMessage: String? {
+    let refusal = output?.flatMap { $0.content ?? [] }.first { $0.type == "refusal" }
+    guard let refusal else { return nil }
+    return refusal.refusal ?? ""
+  }
+}
+
+package struct ResponseIncompleteDetails: Sendable, Hashable, Decodable {
+  package var reason: String?
 }
 
 package struct ResponseOutputItem: Sendable, Hashable, Decodable {
@@ -99,9 +115,10 @@ package struct ResponseObject: Sendable, Hashable, Decodable {
 
 extension ResponseStreamEvent: Decodable {
   private enum CodingKeys: String, CodingKey {
-    case type, delta, item, response, error, arguments
+    case type, delta, item, response, error, arguments, refusal
     case itemID = "item_id"
     case outputIndex = "output_index"
+    case responseID = "response_id"
   }
 
   package init(from decoder: Decoder) throws {
@@ -138,15 +155,46 @@ extension ResponseStreamEvent: Decodable {
         arguments: try c.decode(String.self, forKey: .arguments)
       )
 
+    case "response.refusal.delta":
+      // A refusal is only actionable once the terminal refusal or completed
+      // response carries the full message. Keep partial deltas out of the
+      // public text channel.
+      self = .ignored(type: type)
+
+    case "response.refusal.done":
+      self = .failed(
+        APIError(
+          refusal: try c.decode(String.self, forKey: .refusal),
+          responseID: try c.decodeIfPresent(String.self, forKey: .responseID)
+        )
+      )
+
     case "response.completed":
-      self = .completed(try c.decode(ResponseSummary.self, forKey: .response))
+      let response = try c.decode(ResponseSummary.self, forKey: .response)
+      if let refusal = response.refusalMessage {
+        self = .failed(APIError(refusal: refusal, responseID: response.id))
+      } else {
+        self = .completed(response)
+      }
 
     case "response.failed", "response.incomplete":
       let response = try c.decode(ResponseSummary.self, forKey: .response)
-      self = .failed(APIError(responseError: response.error, responseID: response.id))
+      if type == "response.incomplete" {
+        self = .failed(
+          APIError(
+            incompleteReason: response.incompleteDetails?.reason,
+            responseID: response.id
+          )
+        )
+      } else {
+        self = .failed(APIError(responseError: response.error, responseID: response.id))
+      }
 
     case "error":
-      let error = try c.decode(ResponseErrorPayload.self, forKey: .error)
+      // Responses SSE errors are flat; retain relay compatibility with envelopes.
+      let error =
+        try c.decodeIfPresent(ResponseErrorPayload.self, forKey: .error)
+        ?? ResponseErrorPayload(from: decoder)
       self = .failed(APIError(responseError: error, responseID: nil))
 
     default:
@@ -168,6 +216,29 @@ extension APIError {
       message: message,
       statusCode: nil,
       metadata: responseID.map { ["response_id": $0] }
+    )
+  }
+
+  fileprivate init(refusal: String, responseID: String?) {
+    self.init(
+      kind: .refusal,
+      message: refusal,
+      statusCode: nil,
+      metadata: responseID.map { ["response_id": $0] }
+    )
+  }
+
+  fileprivate init(incompleteReason: String?, responseID: String?) {
+    var metadata = responseID.map { ["response_id": $0] } ?? [:]
+    if let incompleteReason, !incompleteReason.isEmpty {
+      metadata["incomplete_reason"] = incompleteReason
+    }
+    self.init(
+      kind: .incomplete,
+      message: incompleteReason.map { "OpenAI response incomplete: \($0)" }
+        ?? "OpenAI response incomplete.",
+      statusCode: nil,
+      metadata: metadata.isEmpty ? nil : metadata
     )
   }
 }

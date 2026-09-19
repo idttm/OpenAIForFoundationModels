@@ -7,3 +7,14 @@
 *.plist text eol=lf
 *.pbxproj text eol=lf linguist-generated=true
 *.xcuserstate binary
+
+# Defense in depth for source archives; Git publication checks remain required.
+.private/** export-ignore
+.agents/** export-ignore
+.codex/** export-ignore
+.claude/** export-ignore
+.grok/** export-ignore
+IMPLEMENTATION_PLAN.md export-ignore
+DEVPOST_*.md export-ignore
+Docs/Harness.md export-ignore
+Docs/OS27Compatibility.md export-ignore

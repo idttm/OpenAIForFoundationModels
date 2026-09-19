@@ -36,8 +36,56 @@ secrets/
 # Local CLI binary name if produced outside .build
 /OpenAIExample
 
-# Maintainer-only local agent skills (NOT published to public GitHub)
-# Includes public-release skill: prepare / sanitize / ship every public release.
+# Local development configuration
 .grok/
-.agents/skills/public-release/
-**/.grok/skills/public-release/
+
+# Private development material is never a publication candidate.
+.private/
+private/
+.agents/
+.codex/
+.claude/
+.muse/
+.agy/
+.cursor/
+.windsurf/
+.gemini/
+.opencode/
+.cursorrules
+.windsurfrules
+.aider*
+.github/copilot-instructions.md
+.github/agents/
+.github/instructions/
+.github/prompts/
+**/AGENTS.md
+**/CLAUDE.md
+**/GEMINI.md
+**/SKILL.md
+**/.mcp.json
+harness/
+orchestration/
+prompts/
+Verification/
+audits/
+reviews/
+handoffs/
+logs/
+*.log
+*.jsonl
+*.xcresult/
+__pycache__/
+*.pyc
+*.p12
+*.p8
+*.key
+*.pfx
+*.keychain
+*.keychain-db
+*.mobileprovision
+/IMPLEMENTATION_PLAN.md
+/DEVPOST_SUBMISSION.md
+/DEVPOST_DEMO_SCRIPT.md
+/Docs/Harness.md
+/Docs/OS27Compatibility.md
+/Examples/DemoApp/LocalSigning.xcconfig

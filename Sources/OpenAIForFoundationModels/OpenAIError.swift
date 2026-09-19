@@ -22,6 +22,10 @@ public enum OpenAIError: Error, Sendable, Equatable {
   case permission(message: String)
   /// Generic upstream failure with a message.
   case upstream(message: String)
+  /// The model refused to fulfill the request.
+  case refusal(message: String)
+  /// The model stopped before completing the response.
+  case incomplete(reason: String)
 }
 
 extension OpenAIError: LocalizedError {
@@ -45,6 +49,16 @@ extension OpenAIError: LocalizedError {
       return Self.sanitize(message)
     case .upstream(let message):
       return Self.sanitize(message)
+    case .refusal(let message):
+      let safe = Self.sanitize(message)
+      return safe.isEmpty
+        ? "The model refused the request."
+        : "The model refused the request: \(safe)"
+    case .incomplete(let reason):
+      let safe = Self.sanitize(reason)
+      return safe.isEmpty
+        ? "The model response was incomplete (unknown reason)."
+        : "The model response was incomplete (\(safe))."
     }
   }
 

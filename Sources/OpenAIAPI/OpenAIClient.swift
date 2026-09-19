@@ -74,16 +74,27 @@ package struct OpenAIClient: Sendable {
           }
 
           var sawEvent = false
+          var completed = false
           for try await event in SSEParser.events(from: bytes) {
             try Task.checkCancellation()
             sawEvent = true
             continuation.yield(event)
+            if case .completed = event {
+              completed = true
+              break
+            }
           }
 
           guard sawEvent else {
             throw APIError(
               kind: .api,
               message: "Stream ended without any decodable Responses API events."
+            )
+          }
+          guard completed else {
+            throw APIError(
+              kind: .api,
+              message: "Stream ended before response.completed; the response may be incomplete."
             )
           }
           continuation.finish()

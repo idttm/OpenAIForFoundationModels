@@ -83,13 +83,12 @@ enum RequestBuilder {
     from transcript: Transcript
   ) throws -> [ResponseInputItem] {
     var input: [ResponseInputItem] = []
-    var developerParts: [String] = []
 
     for entry in transcript {
       switch entry {
       case .instructions(let instructions):
         let value = text(of: instructions.segments)
-        if !value.isEmpty { developerParts.append(value) }
+        if !value.isEmpty { input.append(.developer(value)) }
 
       case .prompt(let prompt):
         input.append(
@@ -133,12 +132,6 @@ enum RequestBuilder {
       }
     }
 
-    if !developerParts.isEmpty {
-      input.insert(
-        .developer(developerParts.joined(separator: "\n\n")),
-        at: 0
-      )
-    }
     return input
   }
 
@@ -156,11 +149,11 @@ enum RequestBuilder {
       }
       return []
     }
-    return definitions.map {
+    return try definitions.map {
       ToolDefinition(
         name: $0.name,
         description: $0.description,
-        parameters: jsonSchema(from: $0.parameters),
+        parameters: try jsonSchema(from: $0.parameters),
         strict: true
       )
     }
@@ -221,7 +214,7 @@ enum RequestBuilder {
       }
       return
     }
-    applyStructuredOutput(
+    try applyStructuredOutput(
       schema,
       includeInPrompt: includeInPrompt,
       to: &request

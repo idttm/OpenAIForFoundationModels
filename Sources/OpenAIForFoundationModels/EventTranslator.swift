@@ -61,7 +61,8 @@ struct EventTranslator: Sendable {
     _ events: AsyncThrowingStream<ResponseStreamEvent, Error>,
     into sink: some GenerationEventSink
   ) async throws {
-    var metadataSent = false
+    // Foundation Models treats each metadata update as a complete snapshot.
+    var metadata: [String: any ConvertibleToGeneratedContent] = [:]
     var textDeltaSent = false
     var toolCalls: [Int: ToolCallState] = [:]
 
@@ -70,9 +71,7 @@ struct EventTranslator: Sendable {
 
       switch event {
       case .created(let response):
-        if !metadataSent {
-          metadataSent = await sendMetadata(response, to: sink)
-        }
+        metadata = await sendMetadata(response, existing: metadata, to: sink)
 
       case .outputTextDelta(let delta):
         guard !delta.isEmpty else { continue }
@@ -142,9 +141,7 @@ struct EventTranslator: Sendable {
         toolCalls[outputIndex] = state
 
       case .completed(let response):
-        if !metadataSent {
-          metadataSent = await sendMetadata(response, to: sink)
-        }
+        metadata = await sendMetadata(response, existing: metadata, to: sink)
         if !textDeltaSent {
           let text =
             response.output?
@@ -175,7 +172,7 @@ struct EventTranslator: Sendable {
           }
         }
         if let usage = response.usage {
-          await sendUsage(usage, to: sink)
+          metadata = await sendUsage(usage, existing: metadata, to: sink)
         }
 
       case .failed(let error):
@@ -189,28 +186,26 @@ struct EventTranslator: Sendable {
 
   private func sendMetadata(
     _ response: ResponseSummary,
+    existing: [String: any ConvertibleToGeneratedContent],
     to sink: some GenerationEventSink
-  ) async -> Bool {
-    var sent = false
+  ) async -> [String: any ConvertibleToGeneratedContent] {
+    var metadata = existing
     if let model = response.model {
-      sent = true
-      await sink.send(
-        .response(
-          entryID: responseEntryID,
-          action: .updateMetadata(["openai.model": model])
-        )
-      )
+      metadata["openai.model"] = model
     }
     if let id = response.id {
-      sent = true
-      await sink.send(
-        .response(
-          entryID: responseEntryID,
-          action: .updateMetadata(["openai.response_id": id])
-        )
-      )
+      metadata["openai.response_id"] = id
     }
-    return sent
+    guard response.model != nil || response.id != nil else {
+      return metadata
+    }
+    await sink.send(
+      .response(
+        entryID: responseEntryID,
+        action: .updateMetadata(metadata)
+      )
+    )
+    return metadata
   }
 
   private func emitOutputItem(
@@ -248,14 +243,20 @@ struct EventTranslator: Sendable {
 
   private func sendUsage(
     _ usage: ResponseUsage,
+    existing: [String: any ConvertibleToGeneratedContent],
     to sink: some GenerationEventSink
-  ) async {
+  ) async -> [String: any ConvertibleToGeneratedContent] {
+    var metadata = existing
+    for (key, value) in Self.usageMetadata(usage) {
+      metadata[key] = value
+    }
     await sink.send(
       .response(
         entryID: responseEntryID,
-        action: .updateMetadata(Self.usageMetadata(usage))
+        action: .updateMetadata(metadata)
       )
     )
+    return metadata
   }
 
   static func usageMetadata(_ usage: ResponseUsage) -> [String: Int] {

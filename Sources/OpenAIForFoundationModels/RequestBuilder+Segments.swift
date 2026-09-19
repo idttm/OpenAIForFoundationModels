@@ -1,4 +1,5 @@
 import CoreGraphics
+import CoreImage
 import Foundation
 import FoundationModels
 import ImageIO
@@ -16,7 +17,7 @@ extension RequestBuilder {
         value.content
       case .structure(let value):
         value.content.jsonString
-      case .attachment, .custom:
+      case .attachment:
         nil
       @unknown default:
         nil
@@ -57,12 +58,6 @@ extension RequestBuilder {
         @unknown default:
           break
         }
-      case .custom(let custom):
-        let rendered = String(describing: custom)
-        if !rendered.isEmpty {
-          parts.append(.text(rendered))
-          plain += rendered
-        }
       @unknown default:
         break
       }
@@ -87,8 +82,15 @@ extension RequestBuilder {
     cgImage: CGImage,
     orientation: CGImagePropertyOrientation
   ) throws -> String {
-    _ = orientation
-    let data = try pngData(from: cgImage)
+    let oriented = CIImage(cgImage: cgImage)
+      .oriented(forExifOrientation: Int32(orientation.rawValue))
+    let context = CIContext()
+    guard
+      let rendered = context.createCGImage(oriented, from: oriented.extent)
+    else {
+      throw OpenAIError.upstream(message: "Could not render the oriented image.")
+    }
+    let data = try pngData(from: rendered)
     return "data:image/png;base64,\(data.base64EncodedString())"
   }
 

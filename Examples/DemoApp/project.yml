@@ -23,6 +23,9 @@ packages:
 
 targets:
   OpenAIDemo:
+    configFiles:
+      Debug: Signing.xcconfig
+      Release: Signing.xcconfig
     type: application
     platform: iOS
     deploymentTarget: "27.0"
@@ -30,11 +33,6 @@ targets:
       - path: OpenAIDemo
         excludes:
           - "**/.DS_Store"
-    resources:
-      # Package docs for the in-app architecture guide.
-      - path: ../../Docs
-        type: folder
-        destination: Docs
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: org.example.OpenAIDemo
@@ -50,7 +48,6 @@ targets:
         INFOPLIST_KEY_NSLocalNetworkUsageDescription: "OpenAIDemo may reach a local auth proxy during development."
         SWIFT_STRICT_CONCURRENCY: complete
         CODE_SIGN_STYLE: Automatic
-        DEVELOPMENT_TEAM: ""
         SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD: NO
     dependencies:
       - package: OpenAIForFoundationModels

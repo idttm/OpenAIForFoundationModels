@@ -41,5 +41,7 @@ open OpenAIDemo.xcodeproj
 ```
 
 The checked-in bundle identifier is
-`org.example.OpenAIDemo`; change the development team and identifier
-before device distribution.
+`org.example.OpenAIDemo`. For local signing, set `DEVELOPMENT_TEAM` in the
+ignored `LocalSigning.xcconfig` beside `project.yml`; `Signing.xcconfig`
+includes it when present. Keep personal signing settings out of the project
+file and change the bundle identifier before device distribution.

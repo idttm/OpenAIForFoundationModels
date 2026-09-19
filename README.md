@@ -13,8 +13,9 @@ This is an OpenAI-only implementation: requests go to `POST /v1/responses`,
 model discovery uses `GET /v1/models`, and no router, third-party provider, or
 fallback-provider configuration is present.
 
-> Beta: the bridge targets the server-side language-model APIs in Apple OS 27
-> and requires Xcode 27. Those APIs can change during the beta cycle.
+> The bridge targets the server-side language-model APIs in Apple OS 27
+> and requires the selected stable Xcode 27 or later toolchain. Compatibility
+> is checked against the selected Xcode SDK.
 
 This is an independent community project. It is not affiliated with, endorsed
 by, or sponsored by OpenAI or Apple. OpenAI, Apple, and their product names are
@@ -28,10 +29,11 @@ trademarks of their respective owners.
 - Transcript mapping for developer, user, assistant, and function-call items
 - Strict function tools and Structured Outputs
 - Reasoning effort, image input, web search, usage, and response metadata
+- Refusal and incomplete-response mapping with cumulative response metadata
 - Actor-isolated model catalog with conservative capability inference
 - API-key endpoint allow-listing and sanitized relay headers
 - SwiftUI + SwiftData iOS demo with persistent local conversations
-- 37 offline Swift Testing cases; no test requires an API key
+- Offline Swift Testing coverage; no test requires an API key
 
 ## Requirements
 
@@ -174,8 +176,8 @@ See [Docs/SECURITY.md](Docs/SECURITY.md) before shipping.
 ## Run the examples
 
 ```sh
-export DEVELOPER_DIR=/Applications/Xcode-beta.app/Contents/Developer
-export OPENAI_API_KEY=sk-proj-…
+export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer
+export OPENAI_API_KEY=YOUR_API_KEY
 
 swift run OpenAIExample --model gpt-5-mini --prompt "Say hello."
 swift run OpenAIExample --list --use-case reasoning
@@ -197,13 +199,13 @@ Dynamic Profiles labs, architecture notes, and privacy controls.
 ## Validate
 
 ```sh
-export DEVELOPER_DIR=/Applications/Xcode-beta.app/Contents/Developer
+export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer
 ./scripts/release-check.sh
 ```
 
 The release check scans repository hygiene, lints Swift sources, runs all
-offline package tests, regenerates the demo project, and builds the demo for an
-iOS Simulator without code signing.
+offline package tests, and builds the checked-in demo project for an iOS
+Simulator without code signing or rewriting local project settings.
 
 ## Documentation
 
@@ -214,6 +216,7 @@ iOS Simulator without code signing.
 - [Demo app](Docs/DemoApp.md)
 - [Security](Docs/SECURITY.md)
 - [Testing](Docs/Testing.md)
+- [Publishing](Docs/Publishing.md)
 - [Support](SUPPORT.md)
 - [Contributing](CONTRIBUTING.md)
 - [Code of Conduct](CODE_OF_CONDUCT.md)

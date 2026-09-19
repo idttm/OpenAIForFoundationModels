@@ -3,23 +3,23 @@ import FoundationModels
 import OpenAIAPI
 
 extension RequestBuilder {
-  static func jsonSchema(from schema: GenerationSchema) -> JSONValue {
+  static func jsonSchema(from schema: GenerationSchema) throws -> JSONValue {
     guard let value = JSONValue.encoded(schema) else {
-      return .object(["type": .string("object")])
+      throw unsupportedSchema("Could not encode the generation schema.")
     }
-    return sanitize(value)
+    return try sanitizeSchema(value)
   }
 
   static func applyStructuredOutput(
     _ schema: GenerationSchema,
     includeInPrompt: Bool,
     to request: inout ResponseRequest
-  ) {
+  ) throws {
     request.text = TextConfiguration(
       format: .jsonSchema(
         name: "response",
         strict: true,
-        schema: jsonSchema(from: schema)
+        schema: try jsonSchema(from: schema)
       )
     )
 
@@ -39,7 +39,7 @@ extension RequestBuilder {
 
   private static let allowedSchemaKeys: Set<String> = [
     "type", "properties", "required", "items", "enum", "const",
-    "anyOf", "allOf", "oneOf", "$ref", "$defs", "definitions",
+    "anyOf", "$ref", "$defs", "definitions",
     "description", "format", "additionalProperties",
   ]
 
@@ -47,18 +47,31 @@ extension RequestBuilder {
     "properties", "$defs", "definitions",
   ]
 
-  private static func sanitize(_ value: JSONValue) -> JSONValue {
+  private static let unsupportedCompositionKeys: Set<String> = [
+    "allOf", "oneOf", "not", "dependentRequired", "dependentSchemas", "if", "then", "else",
+  ]
+
+  private static func unsupportedSchema(_ message: String) -> LanguageModelError {
+    .unsupportedGenerationGuide(.init(schemaName: nil, debugDescription: message))
+  }
+
+  static func sanitizeSchema(_ value: JSONValue) throws -> JSONValue {
     switch value {
     case .object(let dictionary):
+      if let key = unsupportedCompositionKeys.intersection(dictionary.keys).sorted().first {
+        throw unsupportedSchema("OpenAI strict schemas do not support the \(key) keyword.")
+      }
       let originallyRequired = Set(
         dictionary["required"]?.arrayValue?.compactMap(\.stringValue) ?? []
       )
       var result: [String: JSONValue] = [:]
       for (key, nested) in dictionary where allowedSchemaKeys.contains(key) {
         if mapValuedKeys.contains(key), case .object(let map) = nested {
-          result[key] = .object(map.mapValues(sanitize))
+          result[key] = .object(try map.mapValues(sanitizeSchema))
+        } else if key == "enum" || key == "const" {
+          result[key] = nested
         } else {
-          result[key] = sanitize(nested)
+          result[key] = try sanitizeSchema(nested)
         }
       }
 
@@ -76,7 +89,7 @@ extension RequestBuilder {
       }
       return .object(result)
     case .array(let values):
-      return .array(values.map(sanitize))
+      return .array(try values.map(sanitizeSchema))
     default:
       return value
     }

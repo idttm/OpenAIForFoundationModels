@@ -1,39 +1,66 @@
 # Publishing
 
-The project is ready for a repository and an initial `0.1.0` tag, but no remote
-or package URL is assumed.
+Use this procedure as a fresh per-release review. Replace `X.Y.Z` and other
+placeholders for the release under review; do not carry approvals forward from
+an earlier release.
 
-## Before publishing
+The public set may contain product source, public tests and examples, the
+license, and useful contributor documentation. It must never contain private
+agent instructions or configuration, prompts, harness or orchestration files,
+audit or log material, personal paths, or secrets.
 
-1. Complete [PUBLIC_RELEASE_CHECKLIST.md](PUBLIC_RELEASE_CHECKLIST.md).
-2. Choose the public repository owner and URL.
-3. Replace local package-install examples with that URL.
-4. Update security-reporting links after the repository exists.
-5. Run the package and demo validations in [Testing.md](Testing.md).
-6. Review `CHANGELOG.md` and remove the “Unreleased” marker.
-7. Review the exact files that will be public:
+## Prepare
 
-```sh
-git status --short --ignored
-./scripts/check-repository-hygiene.sh
-```
+1. [ ] Copy [PUBLIC_RELEASE_CHECKLIST.md](PUBLIC_RELEASE_CHECKLIST.md) and
+   complete every item for `X.Y.Z`.
+2. [ ] Confirm the package URL, owner, release notes, and public asset list.
+3. [ ] Install the local publication guards, preserving existing hooks:
 
-## Release
+   ```sh
+   python3 scripts/install-publication-hooks.py
+   ```
 
-```sh
-git tag -a 0.1.0 -m "OpenAI for Foundation Models 0.1.0"
-git push origin main
-git push origin 0.1.0
-```
+4. [ ] Run the selected stable Xcode 27+ toolchain checks in
+   [Testing.md](Testing.md).
+5. [ ] Run the publication guard at each required scope:
 
-Create release notes from `CHANGELOG.md`. A consumer can then use:
+   ```sh
+   ./scripts/check-repository-hygiene.sh
+   ./scripts/check-repository-hygiene.sh --index
+   ./scripts/check-repository-hygiene.sh --history HEAD
+   python3 -m unittest discover -s scripts/tests
+   ```
+
+The default command scans the worktree, `--index` scans staged bytes, and
+`--history HEAD` scans reachable history. The full-history guard intentionally
+blocks an existing historical exposure until a maintainer authorizes cleanup.
+History rewrites cannot erase clones, caches, forks, or previously published
+artifacts. The guard is heuristic; a maintainer must review the actual files,
+release notes, assets, CI logs, and every public reference.
+
+## Release review
+
+- [ ] `CHANGELOG.md` and release notes describe only the reviewed `X.Y.Z`.
+- [ ] Screenshots, archives, sample projects, and other release assets contain
+      no private material or credentials.
+- [ ] CI logs and generated artifacts have been reviewed for private values and
+      paths.
+- [ ] All README, documentation, package, security, and support references
+      point to the intended public locations.
+- [ ] The exact public file list and remote target have maintainer approval.
+
+## Publish
+
+Do not mutate a remote, create a release, or rewrite history until the
+maintainer has authorized the exact commands, target, tag, and file set. After
+that approval, publish only the approved `X.Y.Z` tag and release assets, then
+record the resulting public references in the release record.
+
+Consumers can use the approved package URL and version:
 
 ```swift
 .package(
-  url: "https://github.com/idttm/OpenAIForFoundationModels.git",
-  from: "0.1.0"
+  url: "<PUBLIC_REPOSITORY_URL>",
+  from: "X.Y.Z"
 )
 ```
-
-Do not publish or submit to a hackathon from automation without the maintainer’s
-explicit approval.
